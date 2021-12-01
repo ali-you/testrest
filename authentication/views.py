@@ -1,9 +1,10 @@
 from django.shortcuts import render
 from rest_framework.generics import GenericAPIView
 from authentication import serializers
-from authentication.serializers import RegisterSerializer, LoginSerializer
-from rest_framework import response, status, permissions
+from authentication.serializers import RegisterSerializer, LoginSerializer, UserSerializer
+from rest_framework import response, status, permissions, generics
 from django.contrib.auth import authenticate
+from .models import UserModel
 
 
 class AuthUserAPIView(GenericAPIView):
@@ -47,3 +48,8 @@ class LoginAPIView(GenericAPIView):
 
             return response.Response(serializer.data, status=status.HTTP_200_OK)
         return response.Response({'message': "Invalid credentials, try again"}, status=status.HTTP_401_UNAUTHORIZED)
+
+
+class UserList(generics.ListCreateAPIView):
+    queryset = UserModel.objects.all()
+    serializer_class = UserSerializer

@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from authentication.models import User
+from authentication.models import User, UserModel
 
 
 class RegisterSerializer(serializers.ModelSerializer):
@@ -25,3 +25,9 @@ class LoginSerializer(serializers.ModelSerializer):
         fields = ('email', 'username', 'password', 'token')
 
         read_only_fields = ['token']
+
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserModel
+        fields = ['username', 'password']

@@ -12,6 +12,11 @@ from datetime import datetime, timedelta
 from django.conf import settings
 
 
+class UserModel(models.Model):
+    username = models.CharField(max_length=20)
+    password = models.CharField(max_length=20)
+
+
 class MyUserManager(UserManager):
 
     def _create_user(self, username, email, password, **extra_fields):
