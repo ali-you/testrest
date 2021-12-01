@@ -5,5 +5,5 @@ urlpatterns = [
     path('register', views.RegisterAPIView.as_view(), name="register"),
     path('login', views.LoginAPIView.as_view(), name="login"),
     path('user', views.AuthUserAPIView.as_view(), name="user"),
-    path('user', views.UserList.as_view(), name="userModel"),
+    path('userModel', views.UserList.as_view(), name="userModel"),
 ]
